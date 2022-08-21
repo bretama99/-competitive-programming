@@ -1,6 +1,5 @@
-s="12:45:54PM"
+s = "12:45:54PM"
 first = s[0:2]
-first.
 second = s[8:10]
 time = 0
 output = ""
