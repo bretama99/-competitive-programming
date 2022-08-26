@@ -12,7 +12,6 @@ import sys
 # The function is expected to return a STRING.
 # The function accepts INTEGER year as parameter.
 #
-
 def dayOfProgrammer(year):
         if year < 1700 or year > 2700:
             return
@@ -26,8 +25,8 @@ def dayOfProgrammer(year):
         elif year < 1918:
             if year % 4 == 0:
                 return '12.09.' + str(year)
-        else:
-            return '13.09.'+str(year)
+            else:
+                return '13.09.'+str(year)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
