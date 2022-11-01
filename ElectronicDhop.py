@@ -1,43 +1,10 @@
-#!/bin/python3
-
-import os
-import sys
-
-#
-# Complete the getMoneySpent function below.
-#
-def getMoneySpent(keyboards, drives, b):
-    #
-    # Write your code here.
-    #
-    maxAmount = -1
-    for i in keyboards:
-        for j in drives:
-            if i+j<=b:
-                maxAmount = max(maxAmount,i+j)
-    return maxAmount
-
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    bnm = input().split()
-
-    b = int(bnm[0])
-
-    n = int(bnm[1])
-
-    m = int(bnm[2])
-
-    keyboards = list(map(int, input().rstrip().split()))
-
-    drives = list(map(int, input().rstrip().split()))
-
-    #
-    # The maximum amount of money she can spend on a keyboard and USB drive, or -1 if she can't purchase both items
-    #
-
-    moneySpent = getMoneySpent(keyboards, drives, b)
-
-    fptr.write(str(moneySpent) + '\n')
-
-    fptr.close()
+# calculating H-Index
+def H_index(citations):
+    citations.sort()
+    for i, cited in enumerate(citations):
+        result = len(citations) - i
+        if result <= cited:
+            return result
+    return 0
+citation = [3,5,6,1,0]
+print(H_index(citation))

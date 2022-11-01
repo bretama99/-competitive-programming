@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class RecentCounter(object):
 
     def __init__(self):
@@ -14,13 +17,19 @@ class RecentCounter(object):
                 break
         else:
             self.a.append(t)
+        print(self.a)
         return len(self.a)
 
-        """
-        :type t: int
-        :rtype: int
-        """
-
-# Your RecentCounter object will be instantiated and called as such:
-# obj = RecentCounter()
-# param_1 = obj.ping(t)
+q = RecentCounter();
+a = q.ping(1)
+print(a)
+b=q.ping(2000)
+print(b)
+c=q.ping(3000)
+print(c)
+d=q.ping(4000)
+print(d)
+c=q.ping(5000)
+print(c)
+d=q.ping(6000)
+print(d)
