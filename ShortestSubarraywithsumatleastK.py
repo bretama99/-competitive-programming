@@ -1,20 +1,21 @@
-# A Python program to print all
-# combinations of given length
-import collections
-from itertools import combinations
-num = 7999
-under_twenty = ['','One', 'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven',
-                'Twelve', 'Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Ninteen']
-tens = ['','','Twenty','Thirty','Fourty','Fifty','Sixty','Seventy','Eighty','Ninty']
-chunks = ['Thousand','Million','Billion']
-def to_words(num):
-    if num < 20: return [under_twenty[num]]
-    if num <100: return [tens[num//10]] + to_words(num%10)
-    if num < 1000:
-        quotient, reminder = num//100, num%100
-        return [under_twenty[quotient], 'Hundred'] + to_words(reminder)
-    for power, chunk in enumerate(chunks, 1):
-        if num < 1000** (power+1):
-            quotient, reminder = num//1000**power, num%1000**power
-            return  to_words(quotient)+[chunk] + to_words(reminder)
-print(' '.join(to_words(num)))
+class Solution:
+    def shortestSubarray(self, nums: List[int], k: int) -> int:
+        
+        queue = collections.deque()
+        queue.append([0,0])
+        summ = 0
+        res = float('inf')
+        
+        for i, num in enumerate(nums):
+            summ+=num
+            while queue and summ - queue[0][1]>=k:
+                res = min(res, i- queue[0][0]+1)
+                queue.popleft()
+                
+            while queue and summ <= queue[-1][1]:
+                queue.pop()
+            queue.append([i+1,summ])
+        if res < float('inf'):
+            return res
+        return -1
+        
